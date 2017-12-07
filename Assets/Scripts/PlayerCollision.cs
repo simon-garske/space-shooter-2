@@ -7,15 +7,22 @@ public class PlayerCollision : MonoBehaviour
     public int shield;
     public bool gameOver;
     public GameController gameController;
+    public GUIText shieldText;
 
 
     void Start ()
     {
+        shieldText.text = "";
     }
 
     void Update ()
     {
-		
+        UpdateShield();
+        if (gameController.shieldScore == 100)
+        {
+            shield++;
+            gameController.shieldScore = 0;
+        }
 	}
 
     void OnTriggerEnter(Collider other)
@@ -30,5 +37,10 @@ public class PlayerCollision : MonoBehaviour
             shield--;
 
         }
+    }
+
+    void UpdateShield()
+    {
+        shieldText.text = "Schildstärke bei " + shield + "0%";
     }
 }

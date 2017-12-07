@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 1687644742412734, guid: 9dc23ee02fcf490418f92af89de966cf, type: 2}
+  explosion: {fileID: 100004, guid: 2857e183f4cd3df4e9096e5b578bd32f, type: 2}
   boundary:
     xMin: 0
     xMax: 0
@@ -161,5 +162,7 @@ MonoBehaviour:
     zMax: 0
   bossShotSpawn: {fileID: 4397076866396774}
   speed: 5
-  bossLife: 10
+  bossLife: 30
   direction: 0
+  bossLifeText: {fileID: 132526485081944034, guid: 6a70be0bf26360c48ba03aeac72994f7,
+    type: 2}

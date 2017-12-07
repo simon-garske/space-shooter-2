@@ -18,12 +18,14 @@ public class GameController : MonoBehaviour
 	public GUIText restartText;
 	public GUIText gameOverText;
 	public GUIText shieldText;
+    public GUIText bossLifeText;
 
-	public bool gameOver;
+    public bool gameOver;
 	private bool restart;
     public bool bossFight;
     private int score;
-	private int waveCounter;
+    public int shieldScore;
+	public int waveCounter;
 
 
 	void Start ()
@@ -34,6 +36,7 @@ public class GameController : MonoBehaviour
 		restartText.text = "";
 		gameOverText.text = "";	
 		shieldText.text = "";
+        bossLifeText.text = "";
 		score = 0;
         waveCounter = 0;
 		UpdateScore ();
@@ -50,7 +53,6 @@ public class GameController : MonoBehaviour
 				Application.LoadLevel (Application.loadedLevel);
 			}
 		}
-
 	}
 
 	IEnumerator SpawnWaves()
@@ -58,7 +60,7 @@ public class GameController : MonoBehaviour
 		yield return new WaitForSeconds (startWait);
 		while (true)
 		{
-			if (bossFight == false && waveCounter == 0 ) 
+			if (bossFight == false && waveCounter == 10 || waveCounter == 21 ) 
 			{
 				Vector3 bossSpawnPosition = new Vector3 (bossSpawnValues.x, bossSpawnValues.y, bossSpawnValues.z);
 				Quaternion bossSpawnRotation = new Quaternion(0,180,0,0);
@@ -94,6 +96,7 @@ public class GameController : MonoBehaviour
 	public void AddScore (int newScoreValue)
 	{
 		score += newScoreValue;
+        shieldScore += newScoreValue;
 		UpdateScore ();
 	}
 
@@ -107,6 +110,5 @@ public class GameController : MonoBehaviour
 		gameOverText.text = "Game Over!";
 		gameOver = true;
 	}
-
 
 }
